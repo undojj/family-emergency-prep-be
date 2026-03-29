@@ -1,0 +1,17 @@
+{
+  "name": "family-emergency-prep-be",
+  "version": "1.0.0",
+  "description": "Family Emergency Preparedness Checklist for Belgium",
+  "scripts": {
+    "dev": "npx serve public",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": [
+    "emergency",
+    "preparedness",
+    "belgium",
+    "checklist"
+  ],
+  "author": "",
+  "license": "MIT"
+}

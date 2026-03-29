@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Emergency Preparedness - Belgium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* rotion color system */
+            --background: #F0F0F0;
+            --card: #FFFFFF;
+            --card-hover: #F7F7F7;
+            --border: #D4D4D4;
+            --foreground: #111111;
+            --muted-foreground: #737373;
+            --primary: #FF5A3D;
+            --primary-hover: #E54D34;
+            --radius: 0.625rem;
+        }
+
+        body {
+            font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--foreground);
+            background: var(--background);
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: var(--background);
+        }
+
+        .header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.25rem;
+        }
+
+        .header p {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .controls {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .progress-bar {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .progress-label {
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        .progress-track {
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s;
+            background: var(--card);
+            color: var(--foreground);
+            font-family: inherit;
+        }
+
+        button:hover {
+            background: var(--card-hover);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        .content {
+            padding: 1.5rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 1.5rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+        }
+
+        .section-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--muted-foreground);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--foreground);
+        }
+
+        .subsection {
+            margin-bottom: 1.5rem;
+        }
+
+        .subsection:last-child {
+            margin-bottom: 0;
+        }
+
+        .subsection-title {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 0.625rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            transition: border-color 0.15s, background-color 0.15s;
+            font-family: inherit;
+            background: var(--card);
+            color: var(--foreground);
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--muted-foreground);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            accent-color: var(--primary);
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            user-select: none;
+            font-weight: 400;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .input-row-3 {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            background: var(--card-hover);
+            font-size: 0.875rem;
+        }
+
+        .alert strong {
+            font-weight: 600;
+        }
+
+        .info-box {
+            background: var(--card-hover);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .emergency-number {
+            background: var(--card-hover);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+
+        .emergency-number-large {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.25rem;
+        }
+
+        .emergency-number-label {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .quick-ref-card {
+            background: var(--card-hover);
+            border: 1px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .quick-ref-header {
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.75rem;
+        }
+
+        .signature-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            margin-top: 3rem;
+        }
+
+        .saved-indicator {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: var(--foreground);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            opacity: 0;
+            transform: translateY(0.5rem);
+            transition: all 0.2s;
+            pointer-events: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .saved-indicator.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            line-height: 1.8;
+            font-size: 0.875rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .header {
+                position: static;
+            }
+
+            .controls,
+            .button-group,
+            button {
+                display: none !important;
+            }
+
+            .section {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                border: 1px solid #ddd;
+            }
+
+            input,
+            textarea {
+                border: none;
+                border-bottom: 1px solid var(--border);
+                background: transparent;
+            }
+
+            .progress-bar,
+            .saved-indicator {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1.5rem 1rem;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+
+            .input-row,
+            .input-row-3,
+            .signature-box {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🇧🇪 Family Emergency Preparedness</h1>
+            <p>Belgium Edition - Complete in One Afternoon</p>
+        </div>
+
+        <div class="controls">
+            <div class="progress-bar">
+                <div class="progress-label">Progress: <span id="progress-text">0%</span></div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="btn-primary" onclick="saveData()">Save</button>
+                <button onclick="window.print()">Print</button>
+                <button onclick="clearData()">Clear</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="alert">
+                <strong>How to use:</strong> Fill out each section with your family. Progress saves automatically. Print when complete or save as PDF.
+            </div>
+
+            <!-- Section 1: Emergency Scenarios -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Section 01</div>
+                    <h2 class="section-title">Emergency Scenarios</h2>
+                </div>
+                <p style="margin-bottom: 1rem; color: var(--muted-foreground); font-size: 0.875rem;">Select scenarios to plan for:</p>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="scenario-flood" data-save>
+                        <label for="scenario-flood">Flooding (Wallonia, Meuse/Scheldt)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="scenario-nuclear" data-save>
+                        <label for="scenario-nuclear">Nuclear incident (Doel/Tihange)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="scenario-weather" data-save>
+                        <label for="scenario-weather">Severe weather</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="scenario-unrest" data-save>
+                        <label for="scenario-unrest">Civil unrest/terrorism</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="scenario-infrastructure" data-save>
+                        <label for="scenario-infrastructure">Infrastructure failure</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="scenario-fire" data-save>
+                        <label for="scenario-fire">House fire</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="scenario-medical" data-save>
+                        <label for="scenario-medical">Medical emergency</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="scenario-chemical" data-save>
+                        <label for="scenario-chemical">Chemical/industrial accident</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="scenario-pandemic" data-save>
+                        <label for="scenario-pandemic">Pandemic/quarantine</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="scenario-war" data-save>
+                        <label for="scenario-war">War/major conflict</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Rally Points -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Section 02</div>
+                    <h2 class="section-title">Rally Points & Evacuation Routes</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Primary Meeting Point</h3>
+                    <p style="margin-bottom: 1rem; color: var(--muted-foreground); font-size: 0.875rem;">If separated during a local emergency:</p>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" id="meeting-primary-location" data-save placeholder="e.g., town square, school parking lot">
+                    </div>
+                    <div class="form-group">
+                        <label>Why this location</label>
+                        <input type="text" id="meeting-primary-why" data-save placeholder="Safe, accessible, familiar">
+                    </div>
+                    <div class="form-group">
+                        <label>How to get there</label>
+                        <textarea id="meeting-primary-how" data-save placeholder="Routes from home, work, school"></textarea>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Secondary Meeting Point</h3>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" id="meeting-secondary-location" data-save placeholder="Alternative meeting point">
+                    </div>
+                    <div class="form-group">
+                        <label>Address/GPS</label>
+                        <input type="text" id="meeting-secondary-address" data-save placeholder="Full address or coordinates">
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Safe Houses (Priority Order)</h3>
+
+                    <div class="info-box">
+                        <strong>Safe House #1</strong>
+                        <div class="input-row" style="margin-top: 0.75rem;">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" id="safehouse1-name" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Relationship</label>
+                                <input type="text" id="safehouse1-relationship" data-save>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" id="safehouse1-address" data-save>
+                        </div>
+                        <div class="input-row-3">
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" id="safehouse1-phone" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Distance</label>
+                                <input type="text" id="safehouse1-distance" data-save placeholder="e.g., 15km">
+                            </div>
+                            <div class="form-group">
+                                <label>Capacity</label>
+                                <input type="number" id="safehouse1-capacity" data-save placeholder="# people">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="safehouse1-pets" data-save>
+                                <label for="safehouse1-pets">Can accommodate pets</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>When to go here</label>
+                            <textarea id="safehouse1-when" data-save placeholder="Describe scenarios"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Safe House #2</strong>
+                        <div class="input-row" style="margin-top: 0.75rem;">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" id="safehouse2-name" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Relationship</label>
+                                <input type="text" id="safehouse2-relationship" data-save>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" id="safehouse2-address" data-save>
+                        </div>
+                        <div class="input-row-3">
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" id="safehouse2-phone" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Distance</label>
+                                <input type="text" id="safehouse2-distance" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Capacity</label>
+                                <input type="number" id="safehouse2-capacity" data-save>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="safehouse2-pets" data-save>
+                                <label for="safehouse2-pets">Can accommodate pets</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>When to go here</label>
+                            <textarea id="safehouse2-when" data-save></textarea>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Safe House #3</strong>
+                        <div class="input-row" style="margin-top: 0.75rem;">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" id="safehouse3-name" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Relationship</label>
+                                <input type="text" id="safehouse3-relationship" data-save>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" id="safehouse3-address" data-save>
+                        </div>
+                        <div class="input-row-3">
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" id="safehouse3-phone" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Distance</label>
+                                <input type="text" id="safehouse3-distance" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Capacity</label>
+                                <input type="number" id="safehouse3-capacity" data-save>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="safehouse3-pets" data-save>
+                                <label for="safehouse3-pets">Can accommodate pets</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>When to go here</label>
+                            <textarea id="safehouse3-when" data-save></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">International Evacuation</h3>
+                    <p style="margin-bottom: 1rem; color: var(--muted-foreground); font-size: 0.875rem;">If we need to leave Belgium:</p>
+                    <div class="form-group">
+                        <label>Primary destination</label>
+                        <input type="text" id="intl-destination" data-save placeholder="City">
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Country</label>
+                            <input type="text" id="intl-country" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact person there</label>
+                            <input type="text" id="intl-contact" data-save placeholder="Name & phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Transportation</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="intl-car" data-save>
+                                <label for="intl-car">Car</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="intl-train" data-save>
+                                <label for="intl-train">Train</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="intl-flight" data-save>
+                                <label for="intl-flight">Flight</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: What If Scenarios -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Section 03</div>
+                    <h2 class="section-title">"What If" Decision Trees</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Scenario A: Emergency During Normal Day</h3>
+                    <div class="form-group">
+                        <label>Parent 1 collects children from</label>
+                        <textarea id="scenario-a-parent1" data-save placeholder="List all pickup locations"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Parent 2 collects children from</label>
+                        <textarea id="scenario-a-parent2" data-save placeholder="List all pickup locations"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Backup person if parents unreachable</label>
+                        <input type="text" id="scenario-a-backup" data-save placeholder="Name and phone">
+                    </div>
+                    <div class="form-group">
+                        <label>After collection, we meet at</label>
+                        <input type="text" id="scenario-a-meetpoint" data-save placeholder="Rally point">
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Scenario B: One Parent Away</h3>
+                    <div class="info-box">
+                        <strong>If Parent 1 is away</strong>
+                        <div class="form-group" style="margin-top: 0.75rem;">
+                            <label>Parent 2's action plan</label>
+                            <textarea id="scenario-b-parent1away-plan" data-save placeholder="Step by step plan"></textarea>
+                        </div>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Emergency contact</label>
+                                <input type="text" id="scenario-b-parent1away-contact" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" id="scenario-b-parent1away-phone" data-save>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>If Parent 2 is away</strong>
+                        <div class="form-group" style="margin-top: 0.75rem;">
+                            <label>Parent 1's action plan</label>
+                            <textarea id="scenario-b-parent2away-plan" data-save placeholder="Step by step plan"></textarea>
+                        </div>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Emergency contact</label>
+                                <input type="text" id="scenario-b-parent2away-contact" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" id="scenario-b-parent2away-phone" data-save>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Scenario C: Children Away from Home</h3>
+
+                    <div class="info-box">
+                        <strong>At school/daycare</strong>
+                        <div class="form-group" style="margin-top: 0.75rem;">
+                            <label>School emergency protocol</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-c-school-shelter" data-save>
+                                    <label for="scenario-c-school-shelter">Shelter in place</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-c-school-collect" data-save>
+                                    <label for="scenario-c-school-collect">Parents collect</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Authorized collectors (besides parents)</label>
+                            <input type="text" id="scenario-c-school-collectors" data-save>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="scenario-c-school-updated" data-save>
+                                <label for="scenario-c-school-updated">School has current contacts</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>With grandparents/family</strong>
+                        <div class="input-row" style="margin-top: 0.75rem;">
+                            <div class="form-group">
+                                <label>Grandparent 1</label>
+                                <input type="text" id="scenario-c-grandparent1" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Their plan</label>
+                                <input type="text" id="scenario-c-grandparent1-plan" data-save placeholder="Shelter/bring/collect">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Grandparent 2</label>
+                                <input type="text" id="scenario-c-grandparent2" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Their plan</label>
+                                <input type="text" id="scenario-c-grandparent2-plan" data-save>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Agreement</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-c-grandparent-shelter" data-save>
+                                    <label for="scenario-c-grandparent-shelter">Shelter with them</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-c-grandparent-bring" data-save>
+                                    <label for="scenario-c-grandparent-bring">They bring children</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-c-grandparent-collect" data-save>
+                                    <label for="scenario-c-grandparent-collect">We collect</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>At activities/sports</strong>
+                        <div class="input-row" style="margin-top: 0.75rem;">
+                            <div class="form-group">
+                                <label>Activity 1</label>
+                                <input type="text" id="scenario-c-activity1" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Coach contact</label>
+                                <input type="text" id="scenario-c-activity1-contact" data-save>
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Activity 2</label>
+                                <input type="text" id="scenario-c-activity2" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Coach contact</label>
+                                <input type="text" id="scenario-c-activity2-contact" data-save>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Collection plan</label>
+                            <textarea id="scenario-c-activity-plan" data-save></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Scenario D: Family on Holiday</h3>
+
+                    <div class="info-box">
+                        <strong>Holiday within Belgium</strong>
+                        <div class="form-group" style="margin-top: 0.75rem;">
+                            <label>Do we return home?</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-d-belgium-return" data-save>
+                                    <label for="scenario-d-belgium-return">Yes, immediately</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-d-belgium-depends" data-save>
+                                    <label for="scenario-d-belgium-depends">Depends on emergency</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>If not returning, we go to</label>
+                            <input type="text" id="scenario-d-belgium-alt" data-save>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="scenario-d-belgium-carkit" data-save>
+                                <label for="scenario-d-belgium-carkit">Car has emergency kit</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Holiday abroad</strong>
+                        <div class="form-group" style="margin-top: 0.75rem;">
+                            <label>Belgian Embassy contact</label>
+                            <input type="text" id="scenario-d-abroad-embassy" data-save placeholder="Check foreign.belgium.be">
+                        </div>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Travel insurance</label>
+                                <input type="text" id="scenario-d-abroad-insurance" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Policy number</label>
+                                <input type="text" id="scenario-d-abroad-policy" data-save>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Return to Belgium</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-d-abroad-immediate" data-save>
+                                    <label for="scenario-d-abroad-immediate">Immediately</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-d-abroad-assess" data-save>
+                                    <label for="scenario-d-abroad-assess">Assess first</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Person checking our home</label>
+                                <input type="text" id="scenario-d-abroad-checker" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Has keys</label>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-d-abroad-keys" data-save>
+                                    <label for="scenario-d-abroad-keys">Yes</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Scenario E: Family Members Need Help</h3>
+
+                    <div class="info-box">
+                        <strong>Parent 1's parents</strong>
+                        <div class="form-group" style="margin-top: 0.75rem;">
+                            <label>Location</label>
+                            <input type="text" id="scenario-e-parent1parents-location" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Our response</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-e-parent1parents-come" data-save>
+                                    <label for="scenario-e-parent1parents-come">They come to us</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-e-parent1parents-go" data-save>
+                                    <label for="scenario-e-parent1parents-go">We go to them</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-e-parent1parents-send" data-save>
+                                    <label for="scenario-e-parent1parents-send">Send someone</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Person checking on them</label>
+                                <input type="text" id="scenario-e-parent1parents-checker" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" id="scenario-e-parent1parents-phone" data-save>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Parent 2's parents</strong>
+                        <div class="form-group" style="margin-top: 0.75rem;">
+                            <label>Location</label>
+                            <input type="text" id="scenario-e-parent2parents-location" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Our response</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-e-parent2parents-come" data-save>
+                                    <label for="scenario-e-parent2parents-come">They come to us</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-e-parent2parents-go" data-save>
+                                    <label for="scenario-e-parent2parents-go">We go to them</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="scenario-e-parent2parents-send" data-save>
+                                    <label for="scenario-e-parent2parents-send">Send someone</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Person checking on them</label>
+                                <input type="text" id="scenario-e-parent2parents-checker" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" id="scenario-e-parent2parents-phone" data-save>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Siblings/Extended family</strong>
+                        <div class="input-row" style="margin-top: 0.75rem;">
+                            <div class="form-group">
+                                <label>Family member 1</label>
+                                <input type="text" id="scenario-e-sibling1" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Our plan</label>
+                                <input type="text" id="scenario-e-sibling1-plan" data-save>
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Family member 2</label>
+                                <input type="text" id="scenario-e-sibling2" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Our plan</label>
+                                <input type="text" id="scenario-e-sibling2-plan" data-save>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Communication -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Section 04</div>
+                    <h2 class="section-title">Communication Plan</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Backup Communication Methods</h3>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comm-whatsapp" data-save>
+                            <label for="comm-whatsapp">WhatsApp/Signal (WiFi)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comm-email" data-save>
+                            <label for="comm-email">Email</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comm-social" data-save>
+                            <label for="comm-social">Social media</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comm-radio" data-save>
+                            <label for="comm-radio">Ham radio</label>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <label>Physical note location</label>
+                        <input type="text" id="comm-physical" data-save placeholder="e.g., Under doormat">
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Out-of-Area Contact</h3>
+                    <p style="margin-bottom: 1rem; color: var(--muted-foreground); font-size: 0.875rem;">Someone outside Belgium who coordinates:</p>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" id="comm-outarea-name" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Relationship</label>
+                            <input type="text" id="comm-outarea-relation" data-save>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" id="comm-outarea-phone" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" id="comm-outarea-email" data-save>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Communication Schedule</h3>
+                    <p style="margin-bottom: 1rem; color: var(--muted-foreground); font-size: 0.875rem;">If separated, attempt contact:</p>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comm-sched-hourly" data-save>
+                            <label for="comm-sched-hourly">Every hour</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comm-sched-3hour" data-save>
+                            <label for="comm-sched-3hour">Every 3 hours</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comm-sched-twicedaily" data-save>
+                            <label for="comm-sched-twicedaily">Twice daily</label>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <label>Specific times</label>
+                        <input type="text" id="comm-sched-times" data-save placeholder="e.g., 9:00 AM and 6:00 PM">
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">School/Daycare Contacts</h3>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>School 1</label>
+                            <input type="text" id="comm-school1" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Emergency number</label>
+                            <input type="text" id="comm-school1-phone" data-save>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>School 2</label>
+                            <input type="text" id="comm-school2" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Emergency number</label>
+                            <input type="text" id="comm-school2-phone" data-save>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Daycare</label>
+                            <input type="text" id="comm-daycare" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Emergency number</label>
+                            <input type="text" id="comm-daycare-phone" data-save>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Supplies -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Section 05</div>
+                    <h2 class="section-title">Supplies & Resources</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Go-Bag</h3>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" id="supplies-gobag-location" data-save placeholder="e.g., Hall closet">
+                    </div>
+                    <div class="form-group">
+                        <label>Last checked</label>
+                        <input type="date" id="supplies-gobag-checked" data-save>
+                    </div>
+                    <div class="form-group">
+                        <label>Contents</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="gobag-water" data-save>
+                                <label for="gobag-water">Water</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="gobag-food" data-save>
+                                <label for="gobag-food">Food</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="gobag-firstaid" data-save>
+                                <label for="gobag-firstaid">First aid</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="gobag-docs" data-save>
+                                <label for="gobag-docs">Documents</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="gobag-cash" data-save>
+                                <label for="gobag-cash">Cash</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="gobag-meds" data-save>
+                                <label for="gobag-meds">Medications</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="gobag-flashlight" data-save>
+                                <label for="gobag-flashlight">Flashlight</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="gobag-charger" data-save>
+                                <label for="gobag-charger">Charger</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Car Emergency Kit</h3>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" id="supplies-car-location" data-save placeholder="Trunk">
+                    </div>
+                    <div class="form-group">
+                        <label>Last checked</label>
+                        <input type="date" id="supplies-car-checked" data-save>
+                    </div>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="car-water" data-save>
+                            <label for="car-water">Water</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="car-blankets" data-save>
+                            <label for="car-blankets">Blankets</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="car-flashlight" data-save>
+                            <label for="car-flashlight">Flashlight</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="car-firstaid" data-save>
+                            <label for="car-firstaid">First aid</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="car-charger" data-save>
+                            <label for="car-charger">Charger</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="car-triangle" data-save>
+                            <label for="car-triangle">Warning triangle</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Home Supplies (72h minimum)</h3>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="home-water" data-save>
+                            <label for="home-water">Water (9L per person)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="home-food" data-save>
+                            <label for="home-food">Non-perishable food</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="home-radio" data-save>
+                            <label for="home-radio">Battery radio</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="home-flashlights" data-save>
+                            <label for="home-flashlights">Flashlights</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="home-firstaid" data-save>
+                            <label for="home-firstaid">First aid kit</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="home-meds" data-save>
+                            <label for="home-meds">Medications (2 weeks)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="home-cash" data-save>
+                            <label for="home-cash">Cash (€500+)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="home-docs" data-save>
+                            <label for="home-docs">Document copies</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Important Documents</h3>
+                    <div class="info-box">
+                        <strong>Location 1 - Home</strong>
+                        <div class="form-group" style="margin-top: 0.75rem;">
+                            <label>Where</label>
+                            <input type="text" id="docs-location1" data-save>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="docs1-passports" data-save>
+                                <label for="docs1-passports">Passports/IDs</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="docs1-birth" data-save>
+                                <label for="docs1-birth">Birth certificates</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="docs1-insurance" data-save>
+                                <label for="docs1-insurance">Insurance</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="docs1-medical" data-save>
+                                <label for="docs1-medical">Medical records</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Location 2 - Cloud/Off-site</strong>
+                        <div class="input-row" style="margin-top: 0.75rem;">
+                            <div class="form-group">
+                                <label>Cloud storage</label>
+                                <input type="text" id="docs-cloud-service" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Login</label>
+                                <input type="text" id="docs-cloud-login" data-save>
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Physical copies with</label>
+                                <input type="text" id="docs-physical-person" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" id="docs-physical-location" data-save>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Special Needs -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Section 06</div>
+                    <h2 class="section-title">Special Needs</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Medical Needs</h3>
+                    <div class="info-box">
+                        <strong>Family Member 1</strong>
+                        <div class="form-group" style="margin-top: 0.75rem;">
+                            <label>Name</label>
+                            <input type="text" id="medical1-name" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Condition(s)</label>
+                            <textarea id="medical1-condition" data-save></textarea>
+                        </div>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Critical medication</label>
+                                <input type="text" id="medical1-medication" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Supply (days)</label>
+                                <input type="number" id="medical1-supply" data-save>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Cannot evacuate without</label>
+                            <textarea id="medical1-critical" data-save></textarea>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Family Member 2</strong>
+                        <div class="form-group" style="margin-top: 0.75rem;">
+                            <label>Name</label>
+                            <input type="text" id="medical2-name" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Condition(s)</label>
+                            <textarea id="medical2-condition" data-save></textarea>
+                        </div>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Critical medication</label>
+                                <input type="text" id="medical2-medication" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Supply (days)</label>
+                                <input type="number" id="medical2-supply" data-save>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Pets</h3>
+                    <div class="info-box">
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Pet 1</label>
+                                <input type="text" id="pet1-name" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Type</label>
+                                <input type="text" id="pet1-type" data-save>
+                            </div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pet1-carrier" data-save>
+                                <label for="pet1-carrier">Carrier accessible</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pet1-food" data-save>
+                                <label for="pet1-food">Food supply</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pet1-meds" data-save>
+                                <label for="pet1-meds">Medications</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="input-row">
+                            <div class="form-group">
+                                <label>Pet 2</label>
+                                <input type="text" id="pet2-name" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Type</label>
+                                <input type="text" id="pet2-type" data-save>
+                            </div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pet2-carrier" data-save>
+                                <label for="pet2-carrier">Carrier accessible</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pet2-food" data-save>
+                                <label for="pet2-food">Food supply</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pet2-meds" data-save>
+                                <label for="pet2-meds">Medications</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>If we cannot take pets</label>
+                        <textarea id="pets-backup" data-save placeholder="Backup plan"></textarea>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Other Considerations</h3>
+                    <div class="form-group">
+                        <label>Language assistance needed</label>
+                        <input type="text" id="special-language" data-save>
+                    </div>
+                    <div class="form-group">
+                        <label>Children's comfort items</label>
+                        <input type="text" id="special-comfort" data-save>
+                    </div>
+                    <div class="form-group">
+                        <label>Special dietary requirements</label>
+                        <textarea id="special-dietary" data-save></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 7: Financial -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Section 07</div>
+                    <h2 class="section-title">Financial Preparedness</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Emergency Cash</h3>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Amount at home (€)</label>
+                            <input type="number" id="financial-home-amount" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" id="financial-home-location" data-save>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount in go-bag (€)</label>
+                        <input type="number" id="financial-gobag-amount" data-save>
+                    </div>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="financial-multiple-cards" data-save>
+                            <label for="financial-multiple-cards">Multiple bank cards</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="financial-transfer-know" data-save>
+                            <label for="financial-transfer-know">Know international transfers</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Bank Accounts</h3>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Primary bank</label>
+                            <input type="text" id="financial-bank1" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Emergency number</label>
+                            <input type="text" id="financial-bank1-phone" data-save>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Secondary bank</label>
+                            <input type="text" id="financial-bank2" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Emergency number</label>
+                            <input type="text" id="financial-bank2-phone" data-save>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Insurance</h3>
+                    <div class="info-box">
+                        <div class="input-row-3">
+                            <div class="form-group">
+                                <label>Home insurance</label>
+                                <input type="text" id="insurance-home" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" id="insurance-home-phone" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Policy #</label>
+                                <input type="text" id="insurance-home-policy" data-save>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <div class="input-row-3">
+                            <div class="form-group">
+                                <label>Health insurance</label>
+                                <input type="text" id="insurance-health" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" id="insurance-health-phone" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Policy #</label>
+                                <input type="text" id="insurance-health-policy" data-save>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <div class="input-row-3">
+                            <div class="form-group">
+                                <label>Travel insurance</label>
+                                <input type="text" id="insurance-travel" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" id="insurance-travel-phone" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Policy #</label>
+                                <input type="text" id="insurance-travel-policy" data-save>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 8: Home Security -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Section 08</div>
+                    <h2 class="section-title">Home Security & Evacuation</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Utility Shut-Off</h3>
+                    <div class="checkbox-group" style="margin-bottom: 1rem;">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="utilities-know-gas" data-save>
+                            <label for="utilities-know-gas">Know gas valve location</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="utilities-know-water" data-save>
+                            <label for="utilities-know-water">Know water main location</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="utilities-know-electric" data-save>
+                            <label for="utilities-know-electric">Know breaker box location</label>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Gas valve location</label>
+                            <input type="text" id="utilities-gas-location" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Water main location</label>
+                            <input type="text" id="utilities-water-location" data-save>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Breaker location</label>
+                            <input type="text" id="utilities-electric-location" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Tool needed</label>
+                            <input type="text" id="utilities-tool" data-save>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Evacuation Checklist (5 minutes)</h3>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="evac-gobags" data-save>
+                            <label for="evac-gobags">Grab go-bags</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="evac-pets" data-save>
+                            <label for="evac-pets">Secure pets</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="evac-gas" data-save>
+                            <label for="evac-gas">Shut off gas (if needed)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="evac-lock" data-save>
+                            <label for="evac-lock">Lock doors/windows</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="evac-note" data-save>
+                            <label for="evac-note">Leave note</label>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <label>Don't forget</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="evac-phones" data-save>
+                                <label for="evac-phones">Phones</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="evac-chargers" data-save>
+                                <label for="evac-chargers">Chargers</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="evac-wallets" data-save>
+                                <label for="evac-wallets">Wallets</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="evac-keys" data-save>
+                                <label for="evac-keys">Keys</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="evac-meds" data-save>
+                                <label for="evac-meds">Medications</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Transportation</h3>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Primary vehicle</label>
+                            <input type="text" id="transport-vehicle" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Maintain fuel at</label>
+                            <input type="text" id="transport-fuel" data-save placeholder="Minimum 1/2 tank">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Backup if no car</label>
+                        <textarea id="transport-backup" data-save></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 9: Official Resources -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Section 09</div>
+                    <h2 class="section-title">Official Resources</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Emergency Numbers Belgium</h3>
+                    <div class="emergency-grid">
+                        <div class="emergency-number">
+                            <div class="emergency-number-large">112</div>
+                            <div class="emergency-number-label">General Emergency</div>
+                        </div>
+                        <div class="emergency-number">
+                            <div class="emergency-number-large">101</div>
+                            <div class="emergency-number-label">Police</div>
+                        </div>
+                        <div class="emergency-number">
+                            <div class="emergency-number-large">100</div>
+                            <div class="emergency-number-label">Fire</div>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <strong>Other numbers</strong>
+                        <ul style="margin-top: 0.5rem;">
+                            <li><strong>070 245 245</strong> - Poison Control</li>
+                            <li><strong>116 000</strong> - Missing Children</li>
+                            <li><strong>1733</strong> - Non-urgent medical</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Register for Alerts</h3>
+                    <div class="form-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="official-bealert" data-save>
+                            <label for="official-bealert">Registered for BE-Alert (www.be-alert.be)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Local Resources</h3>
+                    <div class="form-group">
+                        <label>Local police zone</label>
+                        <input type="text" id="official-police" data-save>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Nearest hospital</label>
+                            <input type="text" id="official-hospital" data-save>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" id="official-hospital-address" data-save>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Neighbors to Check</h3>
+                    <div class="info-box">
+                        <div class="input-row-3">
+                            <div class="form-group">
+                                <label>Neighbor 1</label>
+                                <input type="text" id="neighbor1-name" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" id="neighbor1-address" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" id="neighbor1-phone" data-save>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <div class="input-row-3">
+                            <div class="form-group">
+                                <label>Neighbor 2</label>
+                                <input type="text" id="neighbor2-name" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" id="neighbor2-address" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" id="neighbor2-phone" data-save>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 10: Training -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Section 10</div>
+                    <h2 class="section-title">Training & Practice</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Skills Inventory</h3>
+                    <div class="info-box">
+                        <strong>First Aid / CPR</strong>
+                        <div class="checkbox-group" style="margin-top: 0.5rem;">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="skills-firstaid-parent1" data-save>
+                                <label for="skills-firstaid-parent1">Parent 1</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="skills-firstaid-parent2" data-save>
+                                <label for="skills-firstaid-parent2">Parent 2</label>
+                            </div>
+                        </div>
+                        <div class="input-row" style="margin-top: 0.75rem;">
+                            <div class="form-group">
+                                <label>Last trained</label>
+                                <input type="date" id="skills-firstaid-date" data-save>
+                            </div>
+                            <div class="form-group">
+                                <label>Renewal due</label>
+                                <input type="date" id="skills-firstaid-renewal" data-save>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Swimming</strong>
+                        <div class="checkbox-group" style="margin-top: 0.5rem;">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="skills-swim-parent1" data-save>
+                                <label for="skills-swim-parent1">Parent 1</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="skills-swim-parent2" data-save>
+                                <label for="skills-swim-parent2">Parent 2</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="skills-swim-child1" data-save>
+                                <label for="skills-swim-child1">Child 1</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="skills-swim-child2" data-save>
+                                <label for="skills-swim-child2">Child 2</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Drills to Practice</h3>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="drill-meetingpoint" data-save>
+                            <label for="drill-meetingpoint">Meeting point drill</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="drill-gobag" data-save>
+                            <label for="drill-gobag">Go-bag check</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="drill-evac-route" data-save>
+                            <label for="drill-evac-route">Evacuation routes</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="drill-school" data-save>
+                            <label for="drill-school">School pickup drill</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="drill-comm" data-save>
+                            <label for="drill-comm">Communication test</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="drill-utility" data-save>
+                            <label for="drill-utility">Utility shut-off practice</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Review Schedule</h3>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="review-plan" data-save>
+                            <label for="review-plan">Review plan every 6-12 months</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="review-contacts" data-save>
+                            <label for="review-contacts">Update contacts annually</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="review-supplies" data-save>
+                            <label for="review-supplies">Check supplies quarterly</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="review-children" data-save>
+                            <label for="review-children">Update as children grow</label>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <label>Next review date</label>
+                        <input type="date" id="review-next-date" data-save>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 11: Action Items -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Section 11</div>
+                    <h2 class="section-title">Action Items</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Complete Today</h3>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-today-exchange" data-save>
+                            <label for="action-today-exchange">Exchange contact lists</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-today-ice" data-save>
+                            <label for="action-today-ice">Save contacts as "ICE"</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-today-school" data-save>
+                            <label for="action-today-school">Verify school contacts</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-today-photo" data-save>
+                            <label for="action-today-photo">Photo backup of checklist</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-today-share" data-save>
+                            <label for="action-today-share">Share rally points</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-today-calendar" data-save>
+                            <label for="action-today-calendar">Set 6-month review reminder</label>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <label>Drill we'll do this month</label>
+                        <input type="text" id="action-today-drill" data-save>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Complete This Week</h3>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-week-bealert" data-save>
+                            <label for="action-week-bealert">Register BE-Alert</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-week-gobag" data-save>
+                            <label for="action-week-gobag">Check/create go-bag</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-week-supplies" data-save>
+                            <label for="action-week-supplies">Verify 72h supplies</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-week-cash" data-save>
+                            <label for="action-week-cash">Get emergency cash</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-week-docs" data-save>
+                            <label for="action-week-docs">Copy documents</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-week-safehouse" data-save>
+                            <label for="action-week-safehouse">Coordinate with safe houses</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="action-week-kids" data-save>
+                            <label for="action-week-kids">Talk to children</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 12: Agreement -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Section 12</div>
+                    <h2 class="section-title">Family Agreement</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Additional Notes</h3>
+                    <div class="form-group">
+                        <textarea id="notes-additional" data-save style="min-height: 120px;" placeholder="Special considerations unique to your family"></textarea>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Signatures</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--muted-foreground); font-size: 0.875rem;">We agree to follow this plan and review it regularly.</p>
+
+                    <div class="signature-box">
+                        <div>
+                            <label>Parent 1</label>
+                            <input type="text" id="signature-parent1" data-save>
+                            <div class="signature-line"></div>
+                        </div>
+                        <div>
+                            <label>Date</label>
+                            <input type="date" id="signature-parent1-date" data-save>
+                        </div>
+                    </div>
+
+                    <div class="signature-box">
+                        <div>
+                            <label>Parent 2</label>
+                            <input type="text" id="signature-parent2" data-save>
+                            <div class="signature-line"></div>
+                        </div>
+                        <div>
+                            <label>Date</label>
+                            <input type="date" id="signature-parent2-date" data-save>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 1rem; background: var(--card-hover); border-radius: var(--radius);">
+                        <strong style="display: block; margin-bottom: 1rem;">Children (age appropriate)</strong>
+                        <div class="signature-box">
+                            <div>
+                                <label>Child 1</label>
+                                <input type="text" id="signature-child1" data-save>
+                            </div>
+                            <div>
+                                <label>Date</label>
+                                <input type="date" id="signature-child1-date" data-save>
+                            </div>
+                        </div>
+                        <div class="signature-box">
+                            <div>
+                                <label>Child 2</label>
+                                <input type="text" id="signature-child2" data-save>
+                            </div>
+                            <div>
+                                <label>Date</label>
+                                <input type="date" id="signature-child2-date" data-save>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Reference Card -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">Reference</div>
+                    <h2 class="section-title">Quick Reference Card</h2>
+                </div>
+                <div class="alert">
+                    Print and cut out. Make copies for each family member's wallet.
+                </div>
+                <div class="quick-ref-card">
+                    <div class="quick-ref-header">Family Emergency Reference</div>
+
+                    <div style="margin-bottom: 0.75rem;">
+                        <strong>Emergency:</strong> 112
+                    </div>
+
+                    <div style="margin-bottom: 0.75rem;">
+                        <strong>Primary meeting point:</strong><br>
+                        <span id="qr-meeting" style="color: var(--muted-foreground);">_______________________________</span>
+                    </div>
+
+                    <div style="margin-bottom: 0.75rem;">
+                        <strong>Out-of-area contact:</strong><br>
+                        <span id="qr-contact-name" style="color: var(--muted-foreground);">_______________________________</span><br>
+                        <span id="qr-contact-phone" style="color: var(--muted-foreground);">_______________________________</span>
+                    </div>
+
+                    <div style="margin-bottom: 0.75rem;">
+                        <strong>Safe house 1:</strong><br>
+                        <span id="qr-safehouse" style="color: var(--muted-foreground);">_______________________________</span><br>
+                        <span id="qr-safehouse-phone" style="color: var(--muted-foreground);">_______________________________</span>
+                    </div>
+
+                    <div style="margin-bottom: 0.75rem;">
+                        <strong>Communication times:</strong><br>
+                        <span id="qr-comm-times" style="color: var(--muted-foreground);">_______________________________</span>
+                    </div>
+
+                    <div style="border-top: 1px solid var(--border); padding-top: 0.75rem; margin-top: 1rem; font-size: 0.75rem; color: var(--muted-foreground);">
+                        Updated: <span id="qr-date">___________</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p><strong>Family Emergency Preparedness - Belgium</strong></p>
+            <p style="margin-top: 0.5rem;">No plan is perfect, but preparation makes all the difference.</p>
+        </div>
+    </div>
+
+    <div class="saved-indicator" id="saved-indicator">
+        Saved
+    </div>
+
+    <script>
+        function saveData() {
+            const elements = document.querySelectorAll('[data-save]');
+            const data = {};
+            elements.forEach(el => {
+                data[el.id] = el.type === 'checkbox' ? el.checked : el.value;
+            });
+            localStorage.setItem('family-emergency-checklist', JSON.stringify(data));
+            showSavedIndicator();
+            updateProgress();
+        }
+
+        function loadData() {
+            const saved = localStorage.getItem('family-emergency-checklist');
+            if (!saved) return;
+            const data = JSON.parse(saved);
+            Object.keys(data).forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (el.type === 'checkbox') {
+                    el.checked = data[id];
+                } else {
+                    el.value = data[id];
+                }
+            });
+            updateProgress();
+            updateQuickRefCard();
+        }
+
+        function clearData() {
+            if (confirm('Clear all data? This cannot be undone.')) {
+                localStorage.removeItem('family-emergency-checklist');
+                location.reload();
+            }
+        }
+
+        function showSavedIndicator() {
+            const indicator = document.getElementById('saved-indicator');
+            indicator.classList.add('show');
+            setTimeout(() => indicator.classList.remove('show'), 1500);
+        }
+
+        function updateProgress() {
+            const elements = document.querySelectorAll('[data-save]');
+            let filled = 0;
+            elements.forEach(el => {
+                if (el.type === 'checkbox') {
+                    if (el.checked) filled++;
+                } else {
+                    if (el.value && el.value.trim() !== '') filled++;
+                }
+            });
+            const percentage = Math.round((filled / elements.length) * 100);
+            document.getElementById('progress-fill').style.width = percentage + '%';
+            document.getElementById('progress-text').textContent = percentage + '%';
+        }
+
+        function updateQuickRefCard() {
+            const mappings = {
+                'qr-meeting': 'meeting-primary-location',
+                'qr-contact-name': 'comm-outarea-name',
+                'qr-contact-phone': 'comm-outarea-phone',
+                'qr-safehouse': 'safehouse1-name',
+                'qr-safehouse-phone': 'safehouse1-phone',
+                'qr-comm-times': 'comm-sched-times',
+                'qr-date': 'signature-parent1-date'
+            };
+            Object.keys(mappings).forEach(targetId => {
+                const sourceEl = document.getElementById(mappings[targetId]);
+                const targetEl = document.getElementById(targetId);
+                if (sourceEl && targetEl && sourceEl.value) {
+                    targetEl.textContent = sourceEl.value;
+                }
+            });
+        }
+
+        document.addEventListener('input', e => {
+            if (e.target.hasAttribute('data-save')) {
+                saveData();
+                updateQuickRefCard();
+            }
+        });
+
+        document.addEventListener('change', e => {
+            if (e.target.hasAttribute('data-save')) {
+                saveData();
+                updateQuickRefCard();
+            }
+        });
+
+        window.addEventListener('load', () => {
+            loadData();
+            updateQuickRefCard();
+        });
+
+        document.addEventListener('keydown', e => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                saveData();
+            }
+        });
+    </script>
+</body>
+</html>
